@@ -1,0 +1,746 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler
+                                      3 ; Version 4.5.0 #15242 (Linux)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module p8051
+                                      6 	
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _delay500ms_PARM_2
+                                     12 	.globl _data0EAE
+                                     13 	.globl _PS2_CLK
+                                     14 	.globl _PS2_DATA
+                                     15 	.globl _BIT_95H
+                                     16 	.globl _BIT_93H
+                                     17 	.globl _LED_P1_2
+                                     18 	.globl _LED_P1_1
+                                     19 	.globl _LED_P1_0
+                                     20 	.globl _CY
+                                     21 	.globl _AC
+                                     22 	.globl _F0
+                                     23 	.globl _RS1
+                                     24 	.globl _RS0
+                                     25 	.globl _OV
+                                     26 	.globl _F1
+                                     27 	.globl _P
+                                     28 	.globl _PS
+                                     29 	.globl _PT1
+                                     30 	.globl _PX1
+                                     31 	.globl _PT0
+                                     32 	.globl _PX0
+                                     33 	.globl _RD
+                                     34 	.globl _WR
+                                     35 	.globl _T1
+                                     36 	.globl _T0
+                                     37 	.globl _INT1
+                                     38 	.globl _INT0
+                                     39 	.globl _TXD
+                                     40 	.globl _RXD
+                                     41 	.globl _P3_7
+                                     42 	.globl _P3_6
+                                     43 	.globl _P3_5
+                                     44 	.globl _P3_4
+                                     45 	.globl _P3_3
+                                     46 	.globl _P3_2
+                                     47 	.globl _P3_1
+                                     48 	.globl _P3_0
+                                     49 	.globl _EA
+                                     50 	.globl _ES
+                                     51 	.globl _ET1
+                                     52 	.globl _EX1
+                                     53 	.globl _ET0
+                                     54 	.globl _EX0
+                                     55 	.globl _P2_7
+                                     56 	.globl _P2_6
+                                     57 	.globl _P2_5
+                                     58 	.globl _P2_4
+                                     59 	.globl _P2_3
+                                     60 	.globl _P2_2
+                                     61 	.globl _P2_1
+                                     62 	.globl _P2_0
+                                     63 	.globl _SM0
+                                     64 	.globl _SM1
+                                     65 	.globl _SM2
+                                     66 	.globl _REN
+                                     67 	.globl _TB8
+                                     68 	.globl _RB8
+                                     69 	.globl _TI
+                                     70 	.globl _RI
+                                     71 	.globl _P1_7
+                                     72 	.globl _P1_6
+                                     73 	.globl _P1_5
+                                     74 	.globl _P1_4
+                                     75 	.globl _P1_3
+                                     76 	.globl _P1_2
+                                     77 	.globl _P1_1
+                                     78 	.globl _P1_0
+                                     79 	.globl _TF1
+                                     80 	.globl _TR1
+                                     81 	.globl _TF0
+                                     82 	.globl _TR0
+                                     83 	.globl _IE1
+                                     84 	.globl _IT1
+                                     85 	.globl _IE0
+                                     86 	.globl _IT0
+                                     87 	.globl _P0_7
+                                     88 	.globl _P0_6
+                                     89 	.globl _P0_5
+                                     90 	.globl _P0_4
+                                     91 	.globl _P0_3
+                                     92 	.globl _P0_2
+                                     93 	.globl _P0_1
+                                     94 	.globl _P0_0
+                                     95 	.globl _B
+                                     96 	.globl _ACC
+                                     97 	.globl _PSW
+                                     98 	.globl _IP
+                                     99 	.globl _P3
+                                    100 	.globl _IE
+                                    101 	.globl _P2
+                                    102 	.globl _SBUF
+                                    103 	.globl _SCON
+                                    104 	.globl _P1
+                                    105 	.globl _TH1
+                                    106 	.globl _TH0
+                                    107 	.globl _TL1
+                                    108 	.globl _TL0
+                                    109 	.globl _TMOD
+                                    110 	.globl _TCON
+                                    111 	.globl _PCON
+                                    112 	.globl _DPH
+                                    113 	.globl _DPL
+                                    114 	.globl _SP
+                                    115 	.globl _P0
+                                    116 	.globl _FLAG_PARITY_RCV
+                                    117 	.globl _FLAG_25H
+                                    118 	.globl _FLAG_23H
+                                    119 	.globl _FLAG_22H
+                                    120 	.globl _FLAG_21H
+                                    121 	.globl _FLAG_20H
+                                    122 	.globl _FLAG_1FH
+                                    123 	.globl _FLAG_1EH
+                                    124 	.globl _FLAG_1DH
+                                    125 	.globl _FLAG_1CH
+                                    126 	.globl _FLAG_1BH
+                                    127 	.globl _FLAG_1AH
+                                    128 	.globl _FLAG_19H
+                                    129 	.globl _FLAG_18H
+                                    130 	.globl _FLAG_17H
+                                    131 	.globl _FLAG_16H
+                                    132 	.globl _FLAG_15H
+                                    133 	.globl _FLAG_14H
+                                    134 	.globl _FLAG_13H
+                                    135 	.globl _FLAG_12H
+                                    136 	.globl _FLAG_11H
+                                    137 	.globl _FLAG_10H
+                                    138 	.globl _FLAG_0FH
+                                    139 	.globl _FLAG_0EH
+                                    140 	.globl _FLAG_0DH
+                                    141 	.globl _FLAG_0CH
+                                    142 	.globl _FLAG_0BH
+                                    143 	.globl _FLAG_0AH
+                                    144 	.globl _FLAG_9H
+                                    145 	.globl _FLAG_8H
+                                    146 	.globl _FLAG_1H
+                                    147 	.globl _reg_r7
+                                    148 	.globl _reg_r6
+                                    149 	.globl _reg_r5
+                                    150 	.globl _reg_r4
+                                    151 	.globl _reg_r3
+                                    152 	.globl _reg_r2
+                                    153 	.globl _reg_r1
+                                    154 	.globl _reg_r0
+                                    155 	.globl _STATUS_H
+                                    156 	.globl _STATUS_L
+                                    157 	.globl _VAR_33
+                                    158 	.globl _KEY_COUNT
+                                    159 	.globl _VAR_31
+                                    160 	.globl _SCAN_PTR
+                                    161 	.globl _PTR_R
+                                    162 	.globl _PTR_W
+                                    163 	.globl _LAST_BYTE
+                                    164 	.globl _TX_BYTE
+                                    165 	.globl _VAR_2B
+                                    166 	.globl _SCAN_SET
+                                    167 	.globl _DELAY_VAL
+                                    168 	.globl _RATE_VAL
+                                    169 	.globl _LAST_SCAN
+                                    170 	.globl _MODE_SEL
+                                    171 	.globl _label4
+                                    172 	.globl _label9
+                                    173 	.globl _label23
+                                    174 	.globl _delay500ms
+                                    175 	.globl _main
+                                    176 ;--------------------------------------------------------
+                                    177 ; special function registers
+                                    178 ;--------------------------------------------------------
+                                    179 	.area RSEG    (ABS,DATA)
+      000000                        180 	.org 0x0000
+                           000080   181 _P0	=	0x0080
+                           000081   182 _SP	=	0x0081
+                           000082   183 _DPL	=	0x0082
+                           000083   184 _DPH	=	0x0083
+                           000087   185 _PCON	=	0x0087
+                           000088   186 _TCON	=	0x0088
+                           000089   187 _TMOD	=	0x0089
+                           00008A   188 _TL0	=	0x008a
+                           00008B   189 _TL1	=	0x008b
+                           00008C   190 _TH0	=	0x008c
+                           00008D   191 _TH1	=	0x008d
+                           000090   192 _P1	=	0x0090
+                           000098   193 _SCON	=	0x0098
+                           000099   194 _SBUF	=	0x0099
+                           0000A0   195 _P2	=	0x00a0
+                           0000A8   196 _IE	=	0x00a8
+                           0000B0   197 _P3	=	0x00b0
+                           0000B8   198 _IP	=	0x00b8
+                           0000D0   199 _PSW	=	0x00d0
+                           0000E0   200 _ACC	=	0x00e0
+                           0000F0   201 _B	=	0x00f0
+                                    202 ;--------------------------------------------------------
+                                    203 ; special function bits
+                                    204 ;--------------------------------------------------------
+                                    205 	.area RSEG    (ABS,DATA)
+      000000                        206 	.org 0x0000
+                           000080   207 _P0_0	=	0x0080
+                           000081   208 _P0_1	=	0x0081
+                           000082   209 _P0_2	=	0x0082
+                           000083   210 _P0_3	=	0x0083
+                           000084   211 _P0_4	=	0x0084
+                           000085   212 _P0_5	=	0x0085
+                           000086   213 _P0_6	=	0x0086
+                           000087   214 _P0_7	=	0x0087
+                           000088   215 _IT0	=	0x0088
+                           000089   216 _IE0	=	0x0089
+                           00008A   217 _IT1	=	0x008a
+                           00008B   218 _IE1	=	0x008b
+                           00008C   219 _TR0	=	0x008c
+                           00008D   220 _TF0	=	0x008d
+                           00008E   221 _TR1	=	0x008e
+                           00008F   222 _TF1	=	0x008f
+                           000090   223 _P1_0	=	0x0090
+                           000091   224 _P1_1	=	0x0091
+                           000092   225 _P1_2	=	0x0092
+                           000093   226 _P1_3	=	0x0093
+                           000094   227 _P1_4	=	0x0094
+                           000095   228 _P1_5	=	0x0095
+                           000096   229 _P1_6	=	0x0096
+                           000097   230 _P1_7	=	0x0097
+                           000098   231 _RI	=	0x0098
+                           000099   232 _TI	=	0x0099
+                           00009A   233 _RB8	=	0x009a
+                           00009B   234 _TB8	=	0x009b
+                           00009C   235 _REN	=	0x009c
+                           00009D   236 _SM2	=	0x009d
+                           00009E   237 _SM1	=	0x009e
+                           00009F   238 _SM0	=	0x009f
+                           0000A0   239 _P2_0	=	0x00a0
+                           0000A1   240 _P2_1	=	0x00a1
+                           0000A2   241 _P2_2	=	0x00a2
+                           0000A3   242 _P2_3	=	0x00a3
+                           0000A4   243 _P2_4	=	0x00a4
+                           0000A5   244 _P2_5	=	0x00a5
+                           0000A6   245 _P2_6	=	0x00a6
+                           0000A7   246 _P2_7	=	0x00a7
+                           0000A8   247 _EX0	=	0x00a8
+                           0000A9   248 _ET0	=	0x00a9
+                           0000AA   249 _EX1	=	0x00aa
+                           0000AB   250 _ET1	=	0x00ab
+                           0000AC   251 _ES	=	0x00ac
+                           0000AF   252 _EA	=	0x00af
+                           0000B0   253 _P3_0	=	0x00b0
+                           0000B1   254 _P3_1	=	0x00b1
+                           0000B2   255 _P3_2	=	0x00b2
+                           0000B3   256 _P3_3	=	0x00b3
+                           0000B4   257 _P3_4	=	0x00b4
+                           0000B5   258 _P3_5	=	0x00b5
+                           0000B6   259 _P3_6	=	0x00b6
+                           0000B7   260 _P3_7	=	0x00b7
+                           0000B0   261 _RXD	=	0x00b0
+                           0000B1   262 _TXD	=	0x00b1
+                           0000B2   263 _INT0	=	0x00b2
+                           0000B3   264 _INT1	=	0x00b3
+                           0000B4   265 _T0	=	0x00b4
+                           0000B5   266 _T1	=	0x00b5
+                           0000B6   267 _WR	=	0x00b6
+                           0000B7   268 _RD	=	0x00b7
+                           0000B8   269 _PX0	=	0x00b8
+                           0000B9   270 _PT0	=	0x00b9
+                           0000BA   271 _PX1	=	0x00ba
+                           0000BB   272 _PT1	=	0x00bb
+                           0000BC   273 _PS	=	0x00bc
+                           0000D0   274 _P	=	0x00d0
+                           0000D1   275 _F1	=	0x00d1
+                           0000D2   276 _OV	=	0x00d2
+                           0000D3   277 _RS0	=	0x00d3
+                           0000D4   278 _RS1	=	0x00d4
+                           0000D5   279 _F0	=	0x00d5
+                           0000D6   280 _AC	=	0x00d6
+                           0000D7   281 _CY	=	0x00d7
+                           000090   282 _LED_P1_0	=	0x0090
+                           000091   283 _LED_P1_1	=	0x0091
+                           000092   284 _LED_P1_2	=	0x0092
+                           000093   285 _BIT_93H	=	0x0093
+                           000095   286 _BIT_95H	=	0x0095
+                           000096   287 _PS2_DATA	=	0x0096
+                           000097   288 _PS2_CLK	=	0x0097
+                                    289 ;--------------------------------------------------------
+                                    290 ; overlayable register banks
+                                    291 ;--------------------------------------------------------
+                                    292 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        293 	.ds 8
+                                    294 ;--------------------------------------------------------
+                                    295 ; internal ram data
+                                    296 ;--------------------------------------------------------
+                                    297 	.area DSEG    (DATA)
+                           000026   298 _MODE_SEL	=	0x0026
+                           000027   299 _LAST_SCAN	=	0x0027
+                           000028   300 _RATE_VAL	=	0x0028
+                           000029   301 _DELAY_VAL	=	0x0029
+                           00002A   302 _SCAN_SET	=	0x002a
+                           00002B   303 _VAR_2B	=	0x002b
+                           00002C   304 _TX_BYTE	=	0x002c
+                           00002D   305 _LAST_BYTE	=	0x002d
+                           00002E   306 _PTR_W	=	0x002e
+                           00002F   307 _PTR_R	=	0x002f
+                           000030   308 _SCAN_PTR	=	0x0030
+                           000031   309 _VAR_31	=	0x0031
+                           000032   310 _KEY_COUNT	=	0x0032
+                           000033   311 _VAR_33	=	0x0033
+                           000072   312 _STATUS_L	=	0x0072
+                           000073   313 _STATUS_H	=	0x0073
+      000000                        314 _reg_r0::
+      000000                        315 	.ds 1
+      000001                        316 _reg_r1::
+      000001                        317 	.ds 1
+      000002                        318 _reg_r2::
+      000002                        319 	.ds 1
+      000003                        320 _reg_r3::
+      000003                        321 	.ds 1
+      000004                        322 _reg_r4::
+      000004                        323 	.ds 1
+      000005                        324 _reg_r5::
+      000005                        325 	.ds 1
+      000006                        326 _reg_r6::
+      000006                        327 	.ds 1
+      000007                        328 _reg_r7::
+      000007                        329 	.ds 1
+                                    330 ;--------------------------------------------------------
+                                    331 ; overlayable items in internal ram
+                                    332 ;--------------------------------------------------------
+                                    333 	.area	OSEG    (OVR,DATA)
+                                    334 	.area	OSEG    (OVR,DATA)
+                                    335 	.area	OSEG    (OVR,DATA)
+      000000                        336 _delay500ms_PARM_2:
+      000000                        337 	.ds 1
+                                    338 ;--------------------------------------------------------
+                                    339 ; Stack segment in internal ram
+                                    340 ;--------------------------------------------------------
+                                    341 	.area SSEG
+      000000                        342 __start__stack:
+      000000                        343 	.ds	1
+                                    344 
+                                    345 ;--------------------------------------------------------
+                                    346 ; indirectly addressable internal ram data
+                                    347 ;--------------------------------------------------------
+                                    348 	.area ISEG    (DATA)
+                                    349 ;--------------------------------------------------------
+                                    350 ; absolute internal ram data
+                                    351 ;--------------------------------------------------------
+                                    352 	.area IABS    (ABS,DATA)
+                                    353 	.area IABS    (ABS,DATA)
+                                    354 ;--------------------------------------------------------
+                                    355 ; bit data
+                                    356 ;--------------------------------------------------------
+                                    357 	.area BSEG    (BIT)
+                           000001   358 _FLAG_1H	=	0x0001
+                           000008   359 _FLAG_8H	=	0x0008
+                           000009   360 _FLAG_9H	=	0x0009
+                           00000A   361 _FLAG_0AH	=	0x000a
+                           00000B   362 _FLAG_0BH	=	0x000b
+                           00000C   363 _FLAG_0CH	=	0x000c
+                           00000D   364 _FLAG_0DH	=	0x000d
+                           00000E   365 _FLAG_0EH	=	0x000e
+                           00000F   366 _FLAG_0FH	=	0x000f
+                           000010   367 _FLAG_10H	=	0x0010
+                           000011   368 _FLAG_11H	=	0x0011
+                           000012   369 _FLAG_12H	=	0x0012
+                           000013   370 _FLAG_13H	=	0x0013
+                           000014   371 _FLAG_14H	=	0x0014
+                           000015   372 _FLAG_15H	=	0x0015
+                           000016   373 _FLAG_16H	=	0x0016
+                           000017   374 _FLAG_17H	=	0x0017
+                           000018   375 _FLAG_18H	=	0x0018
+                           000019   376 _FLAG_19H	=	0x0019
+                           00001A   377 _FLAG_1AH	=	0x001a
+                           00001B   378 _FLAG_1BH	=	0x001b
+                           00001C   379 _FLAG_1CH	=	0x001c
+                           00001D   380 _FLAG_1DH	=	0x001d
+                           00001E   381 _FLAG_1EH	=	0x001e
+                           00001F   382 _FLAG_1FH	=	0x001f
+                           000020   383 _FLAG_20H	=	0x0020
+                           000021   384 _FLAG_21H	=	0x0021
+                           000022   385 _FLAG_22H	=	0x0022
+                           000023   386 _FLAG_23H	=	0x0023
+                           000025   387 _FLAG_25H	=	0x0025
+                           000024   388 _FLAG_PARITY_RCV	=	0x0024
+                                    389 ;--------------------------------------------------------
+                                    390 ; paged external ram data
+                                    391 ;--------------------------------------------------------
+                                    392 	.area PSEG    (PAG,XDATA)
+                                    393 ;--------------------------------------------------------
+                                    394 ; uninitialized external ram data
+                                    395 ;--------------------------------------------------------
+                                    396 	.area XSEG    (XDATA)
+                                    397 ;--------------------------------------------------------
+                                    398 ; absolute external ram data
+                                    399 ;--------------------------------------------------------
+                                    400 	.area XABS    (ABS,XDATA)
+                                    401 ;--------------------------------------------------------
+                                    402 ; initialized external ram data
+                                    403 ;--------------------------------------------------------
+                                    404 	.area XISEG   (XDATA)
+                                    405 	.area HOME    (CODE)
+                                    406 	.area GSINIT0 (CODE)
+                                    407 	.area GSINIT1 (CODE)
+                                    408 	.area GSINIT2 (CODE)
+                                    409 	.area GSINIT3 (CODE)
+                                    410 	.area GSINIT4 (CODE)
+                                    411 	.area GSINIT5 (CODE)
+                                    412 	.area GSINIT  (CODE)
+                                    413 	.area GSFINAL (CODE)
+                                    414 	.area CSEG    (CODE)
+                                    415 ;--------------------------------------------------------
+                                    416 ; interrupt vector
+                                    417 ;--------------------------------------------------------
+                                    418 	.area HOME    (CODE)
+      000000                        419 __interrupt_vect:
+      000000 02r00r00         [24]  420 	ljmp	__sdcc_gsinit_startup
+                                    421 ; restartable atomic support routines
+      000003                        422 	.ds	5
+      000008                        423 sdcc_atomic_exchange_rollback_start::
+      000008 00               [12]  424 	nop
+      000009 00               [12]  425 	nop
+      00000A                        426 sdcc_atomic_exchange_pdata_impl:
+      00000A E2               [24]  427 	movx	a, @r0
+      00000B FB               [12]  428 	mov	r3, a
+      00000C EA               [12]  429 	mov	a, r2
+      00000D F2               [24]  430 	movx	@r0, a
+      00000E 80 2C            [24]  431 	sjmp	sdcc_atomic_exchange_exit
+      000010 00               [12]  432 	nop
+      000011 00               [12]  433 	nop
+      000012                        434 sdcc_atomic_exchange_xdata_impl:
+      000012 E0               [24]  435 	movx	a, @dptr
+      000013 FB               [12]  436 	mov	r3, a
+      000014 EA               [12]  437 	mov	a, r2
+      000015 F0               [24]  438 	movx	@dptr, a
+      000016 80 24            [24]  439 	sjmp	sdcc_atomic_exchange_exit
+      000018                        440 sdcc_atomic_compare_exchange_idata_impl:
+      000018 E6               [12]  441 	mov	a, @r0
+      000019 B5 02 02         [24]  442 	cjne	a, ar2, .+#5
+      00001C EB               [12]  443 	mov	a, r3
+      00001D F6               [12]  444 	mov	@r0, a
+      00001E 22               [24]  445 	ret
+      00001F 00               [12]  446 	nop
+      000020                        447 sdcc_atomic_compare_exchange_pdata_impl:
+      000020 E2               [24]  448 	movx	a, @r0
+      000021 B5 02 02         [24]  449 	cjne	a, ar2, .+#5
+      000024 EB               [12]  450 	mov	a, r3
+      000025 F2               [24]  451 	movx	@r0, a
+      000026 22               [24]  452 	ret
+      000027 00               [12]  453 	nop
+      000028                        454 sdcc_atomic_compare_exchange_xdata_impl:
+      000028 E0               [24]  455 	movx	a, @dptr
+      000029 B5 02 02         [24]  456 	cjne	a, ar2, .+#5
+      00002C EB               [12]  457 	mov	a, r3
+      00002D F0               [24]  458 	movx	@dptr, a
+      00002E 22               [24]  459 	ret
+      00002F                        460 sdcc_atomic_exchange_rollback_end::
+                                    461 
+      00002F                        462 sdcc_atomic_exchange_gptr_impl::
+      00002F 30 F6 E0         [24]  463 	jnb	b.6, sdcc_atomic_exchange_xdata_impl
+      000032 A8 82            [24]  464 	mov	r0, dpl
+      000034 20 F5 D3         [24]  465 	jb	b.5, sdcc_atomic_exchange_pdata_impl
+      000037                        466 sdcc_atomic_exchange_idata_impl:
+      000037 EA               [12]  467 	mov	a, r2
+      000038 C6               [12]  468 	xch	a, @r0
+      000039 F5 82            [12]  469 	mov	dpl, a
+      00003B 22               [24]  470 	ret
+      00003C                        471 sdcc_atomic_exchange_exit:
+      00003C 8B 82            [24]  472 	mov	dpl, r3
+      00003E 22               [24]  473 	ret
+      00003F                        474 sdcc_atomic_compare_exchange_gptr_impl::
+      00003F 30 F6 E6         [24]  475 	jnb	b.6, sdcc_atomic_compare_exchange_xdata_impl
+      000042 A8 82            [24]  476 	mov	r0, dpl
+      000044 20 F5 D9         [24]  477 	jb	b.5, sdcc_atomic_compare_exchange_pdata_impl
+      000047 80 CF            [24]  478 	sjmp	sdcc_atomic_compare_exchange_idata_impl
+                                    479 ;--------------------------------------------------------
+                                    480 ; global & static initialisations
+                                    481 ;--------------------------------------------------------
+                                    482 	.area HOME    (CODE)
+                                    483 	.area GSINIT  (CODE)
+                                    484 	.area GSFINAL (CODE)
+                                    485 	.area GSINIT  (CODE)
+                                    486 	.globl __sdcc_gsinit_startup
+                                    487 	.globl __sdcc_program_startup
+                                    488 	.globl __start__stack
+                                    489 	.globl __mcs51_genXINIT
+                                    490 	.globl __mcs51_genXRAMCLEAR
+                                    491 	.globl __mcs51_genRAMCLEAR
+                                    492 	.area GSFINAL (CODE)
+      000000 02r00r49         [24]  493 	ljmp	__sdcc_program_startup
+                                    494 ;--------------------------------------------------------
+                                    495 ; Home
+                                    496 ;--------------------------------------------------------
+                                    497 	.area HOME    (CODE)
+                                    498 	.area HOME    (CODE)
+      000049                        499 __sdcc_program_startup:
+      000049 02r00r70         [24]  500 	ljmp	_main
+                                    501 ;	return from main will return to caller
+                                    502 ;--------------------------------------------------------
+                                    503 ; code
+                                    504 ;--------------------------------------------------------
+                                    505 	.area CSEG    (CODE)
+                                    506 ;------------------------------------------------------------
+                                    507 ;Allocation info for local variables in function 'label4'
+                                    508 ;------------------------------------------------------------
+                                    509 ;	p8051.c:78: void label4(void) {
+                                    510 ;	-----------------------------------------
+                                    511 ;	 function label4
+                                    512 ;	-----------------------------------------
+      000000                        513 _label4:
+                           000007   514 	ar7 = 0x07
+                           000006   515 	ar6 = 0x06
+                           000005   516 	ar5 = 0x05
+                           000004   517 	ar4 = 0x04
+                           000003   518 	ar3 = 0x03
+                           000002   519 	ar2 = 0x02
+                           000001   520 	ar1 = 0x01
+                           000000   521 	ar0 = 0x00
+                                    522 ;	p8051.c:105: __endasm;
+      000000 79 00            [12]  523 	mov	r1, #0
+      000002 90r00r00         [24]  524 	mov	dptr, #_label4
+      000005                        525 l428:
+      000005 E5 82            [12]  526 	mov	a, dpl
+      000007 70 10            [24]  527 	jnz	l425
+      000009 E5 83            [12]  528 	mov	a, dph
+      00000B 70 0C            [24]  529 	jnz	l425
+      00000D E9               [12]  530 	mov	a, r1
+      00000E B4 1F 04         [24]  531 	cjne	a, #0x1F, l426
+      000011 75*01 AA         [24]  532 	mov	_reg_r1, #0xAA
+      000014 22               [24]  533 	ret
+      000015                        534 l426:
+      000015 75*01 FC         [24]  535 	mov	_reg_r1, #0xFC
+      000018 22               [24]  536 	ret
+      000019                        537 l425:
+      000019 15 82            [12]  538 	dec	dpl
+      00001B E5 82            [12]  539 	mov	a, dpl
+      00001D B4 FF 02         [24]  540 	cjne	a, #0xFF, l427
+      000020 15 83            [12]  541 	dec	dph
+      000022                        542 l427:
+      000022 E4               [12]  543 	clr	a
+      000023 93               [24]  544 	movc	a, @a+dptr
+      000024 69               [12]  545 	xrl	a, r1
+      000025 F9               [12]  546 	mov	r1, a
+      000026 80 DD            [24]  547 	sjmp	l428
+                                    548 ;	p8051.c:106: }
+      000028 22               [24]  549 	ret
+                                    550 ;------------------------------------------------------------
+                                    551 ;Allocation info for local variables in function 'label9'
+                                    552 ;------------------------------------------------------------
+                                    553 ;i             Allocated to registers r7 
+                                    554 ;------------------------------------------------------------
+                                    555 ;	p8051.c:108: void label9(void) {
+                                    556 ;	-----------------------------------------
+                                    557 ;	 function label9
+                                    558 ;	-----------------------------------------
+      000029                        559 _label9:
+                                    560 ;	p8051.c:110: for(i = 0x56; i < 0x72; i++) {
+      000029 7F 1C            [12]  561 	mov	r7,#0x1c
+      00002B                        562 00104$:
+                                    563 ;	p8051.c:111: *((__data unsigned char *)i) = 0xFF;
+      00002B EF               [12]  564 	mov	a,r7
+      00002C 14               [12]  565 	dec	a
+      00002D FE               [12]  566 	mov	r6,a
+      00002E F9               [12]  567 	mov	r1,a
+      00002F 77 FF            [12]  568 	mov	@r1,#0xff
+                                    569 ;	p8051.c:110: for(i = 0x56; i < 0x72; i++) {
+      000031 EE               [12]  570 	mov	a,r6
+      000032 FF               [12]  571 	mov	r7,a
+      000033 70 F6            [24]  572 	jnz	00104$
+                                    573 ;	p8051.c:113: FLAG_25H = 0;
+                                    574 ;	assignBit
+      000035 C2 25            [12]  575 	clr	_FLAG_25H
+                                    576 ;	p8051.c:114: RATE_VAL = 0x01;
+      000037 75 28 01         [24]  577 	mov	_RATE_VAL,#0x01
+                                    578 ;	p8051.c:115: DELAY_VAL = 0xF4;
+      00003A 75 29 F4         [24]  579 	mov	_DELAY_VAL,#0xf4
+                                    580 ;	p8051.c:116: SCAN_SET = 0x00;
+      00003D 75 2A 00         [24]  581 	mov	_SCAN_SET,#0x00
+                                    582 ;	p8051.c:117: VAR_2B = 0x5C;
+      000040 75 2B 5C         [24]  583 	mov	_VAR_2B,#0x5c
+                                    584 ;	p8051.c:118: }
+      000043 22               [24]  585 	ret
+                                    586 ;------------------------------------------------------------
+                                    587 ;Allocation info for local variables in function 'label23'
+                                    588 ;------------------------------------------------------------
+                                    589 ;offset        Allocated to registers r7 
+                                    590 ;------------------------------------------------------------
+                                    591 ;	p8051.c:120: void label23(void) {
+                                    592 ;	-----------------------------------------
+                                    593 ;	 function label23
+                                    594 ;	-----------------------------------------
+      000044                        595 _label23:
+                                    596 ;	p8051.c:122: offset = P2 & 0x07;
+      000044 E5 A0            [12]  597 	mov	a,_P2
+      000046 54 07            [12]  598 	anl	a,#0x07
+      000048 FF               [12]  599 	mov	r7,a
+                                    600 ;	p8051.c:123: ACC = reg_r7 - 0x34;
+      000049 E5*07            [12]  601 	mov	a,_reg_r7
+      00004B FE               [12]  602 	mov	r6,a
+      00004C 24 CC            [12]  603 	add	a,#0xcc
+      00004E F5 E0            [12]  604 	mov	_ACC,a
+                                    605 ;	p8051.c:127: __endasm;
+      000050 C4               [12]  606 	swap	a
+      000051 03               [12]  607 	rr	a
+                                    608 ;	p8051.c:128: offset += ACC;
+      000052 E5 E0            [12]  609 	mov	a,_ACC
+      000054 2F               [12]  610 	add	a, r7
+                                    611 ;	p8051.c:129: reg_r2 = data0EAE[offset];
+      000055 90r00r00         [24]  612 	mov	dptr,#_data0EAE
+      000058 93               [24]  613 	movc	a,@a+dptr
+      000059 F5*02            [12]  614 	mov	_reg_r2,a
+                                    615 ;	p8051.c:130: }
+      00005B 22               [24]  616 	ret
+                                    617 ;------------------------------------------------------------
+                                    618 ;Allocation info for local variables in function 'delay500ms'
+                                    619 ;------------------------------------------------------------
+                                    620 ;r1            Allocated with name '_delay500ms_PARM_2'
+                                    621 ;r0            Allocated to registers 
+                                    622 ;t             Allocated to registers 
+                                    623 ;------------------------------------------------------------
+                                    624 ;	p8051.c:132: void delay500ms(unsigned char r0, unsigned char r1) {
+                                    625 ;	-----------------------------------------
+                                    626 ;	 function delay500ms
+                                    627 ;	-----------------------------------------
+      00005C                        628 _delay500ms:
+      00005C AF 82            [24]  629 	mov	r7, dpl
+                                    630 ;	p8051.c:133: while(r0--) {
+      00005E                        631 00104$:
+      00005E 8F 06            [24]  632 	mov	ar6,r7
+      000060 1F               [12]  633 	dec	r7
+      000061 EE               [12]  634 	mov	a,r6
+      000062 60 0B            [24]  635 	jz	00107$
+                                    636 ;	p8051.c:134: unsigned char t = r1;
+      000064 AE*00            [24]  637 	mov	r6,_delay500ms_PARM_2
+                                    638 ;	p8051.c:135: while(t--) {
+      000066                        639 00101$:
+      000066 8E 05            [24]  640 	mov	ar5,r6
+      000068 1E               [12]  641 	dec	r6
+      000069 ED               [12]  642 	mov	a,r5
+      00006A 60 F2            [24]  643 	jz	00104$
+                                    644 ;	p8051.c:136: __asm nop __endasm;
+      00006C 00               [12]  645 	nop	
+      00006D 80 F7            [24]  646 	sjmp	00101$
+      00006F                        647 00107$:
+                                    648 ;	p8051.c:139: }
+      00006F 22               [24]  649 	ret
+                                    650 ;------------------------------------------------------------
+                                    651 ;Allocation info for local variables in function 'main'
+                                    652 ;------------------------------------------------------------
+                                    653 ;	p8051.c:141: void main(void) {
+                                    654 ;	-----------------------------------------
+                                    655 ;	 function main
+                                    656 ;	-----------------------------------------
+      000070                        657 _main:
+                                    658 ;	p8051.c:142: EA = 1;
+                                    659 ;	assignBit
+      000070 D2 AF            [12]  660 	setb	_EA
+                                    661 ;	p8051.c:143: SP = 0x0F;
+      000072 75 81 0F         [24]  662 	mov	_SP,#0x0f
+                                    663 ;	p8051.c:144: P1 = 0xF7;
+      000075 75 90 F7         [24]  664 	mov	_P1,#0xf7
+                                    665 ;	p8051.c:145: TL0 = 0x00;
+      000078 75 8A 00         [24]  666 	mov	_TL0,#0x00
+                                    667 ;	p8051.c:146: TH0 = 0xF1;
+      00007B 75 8C F1         [24]  668 	mov	_TH0,#0xf1
+                                    669 ;	p8051.c:148: delay500ms(0xC8, 0xFA);
+      00007E 75*00 FA         [24]  670 	mov	_delay500ms_PARM_2,#0xfa
+      000081 75 82 C8         [24]  671 	mov	dpl, #0xc8
+      000084 12r00r5C         [24]  672 	lcall	_delay500ms
+                                    673 ;	p8051.c:149: label4(); 
+      000087 12r00r00         [24]  674 	lcall	_label4
+                                    675 ;	p8051.c:152: for (reg_r0 = 0x7F; reg_r0 > 0x01; reg_r0--) {
+      00008A 75*00 7F         [24]  676 	mov	_reg_r0,#0x7f
+      00008D                        677 00114$:
+                                    678 ;	p8051.c:153: *((__data unsigned char *)reg_r0) = 0xFF;
+      00008D A9*00            [24]  679 	mov	r1,_reg_r0
+      00008F 77 FF            [12]  680 	mov	@r1,#0xff
+                                    681 ;	p8051.c:154: if (*((__data unsigned char *)reg_r0) != 0xFF) goto ram_fail;
+      000091 A9*00            [24]  682 	mov	r1,_reg_r0
+      000093 87 07            [24]  683 	mov	ar7,@r1
+      000095 BF FF 11         [24]  684 	cjne	r7,#0xff,00106$
+                                    685 ;	p8051.c:155: *((__data unsigned char *)reg_r0) = 0x00;
+      000098 77 00            [12]  686 	mov	@r1,#0x00
+                                    687 ;	p8051.c:156: if (*((__data unsigned char *)reg_r0) != 0x00) goto ram_fail;
+      00009A A9*00            [24]  688 	mov	r1,_reg_r0
+      00009C E7               [12]  689 	mov	a,@r1
+      00009D 70 0A            [24]  690 	jnz	00106$
+                                    691 ;	p8051.c:152: for (reg_r0 = 0x7F; reg_r0 > 0x01; reg_r0--) {
+      00009F 15*00            [12]  692 	dec	_reg_r0
+      0000A1 E5*00            [12]  693 	mov	a,_reg_r0
+      0000A3 24 FE            [12]  694 	add	a,#0xff - 0x01
+      0000A5 40 E6            [24]  695 	jc	00114$
+                                    696 ;	p8051.c:158: goto ram_ok;
+                                    697 ;	p8051.c:160: ram_fail:
+      0000A7 80 0D            [24]  698 	sjmp	00108$
+      0000A9                        699 00106$:
+                                    700 ;	p8051.c:161: for (reg_r0 = 0x7F; reg_r0 > 0; reg_r0--) {
+      0000A9 75*00 7F         [24]  701 	mov	_reg_r0,#0x7f
+      0000AC                        702 00116$:
+                                    703 ;	p8051.c:162: *((__data unsigned char *)reg_r0) = 0x00;
+      0000AC A9*00            [24]  704 	mov	r1,_reg_r0
+      0000AE 77 00            [12]  705 	mov	@r1,#0x00
+                                    706 ;	p8051.c:161: for (reg_r0 = 0x7F; reg_r0 > 0; reg_r0--) {
+      0000B0 D5*00 F9         [24]  707 	djnz	_reg_r0,00116$
+                                    708 ;	p8051.c:164: reg_r1 = 0xFC;
+      0000B3 75*01 FC         [24]  709 	mov	_reg_r1,#0xfc
+                                    710 ;	p8051.c:166: ram_ok:
+      0000B6                        711 00108$:
+                                    712 ;	p8051.c:167: FLAG_21H = 1;
+                                    713 ;	assignBit
+      0000B6 D2 21            [12]  714 	setb	_FLAG_21H
+                                    715 ;	p8051.c:169: while(1) {
+      0000B8                        716 00112$:
+                                    717 ;	p8051.c:170: TX_BYTE = reg_r1;
+      0000B8 85*01 2C         [24]  718 	mov	_TX_BYTE,_reg_r1
+                                    719 ;	p8051.c:171: MODE_SEL = 0x02;
+      0000BB 75 26 02         [24]  720 	mov	_MODE_SEL,#0x02
+                                    721 ;	p8051.c:172: label9();
+      0000BE 12r00r29         [24]  722 	lcall	_label9
+                                    723 ;	p8051.c:173: PTR_W = 0x43;
+      0000C1 75 2E 43         [24]  724 	mov	_PTR_W,#0x43
+                                    725 ;	p8051.c:174: PTR_R = 0x43;
+      0000C4 75 2F 43         [24]  726 	mov	_PTR_R,#0x43
+                                    727 ;	p8051.c:175: P1 &= 0xF8;
+      0000C7 53 90 F8         [24]  728 	anl	_P1,#0xf8
+                                    729 ;	p8051.c:176: if (!FLAG_21H) { TR0 = 1; ET0 = 1; EX0 = 1; }
+      0000CA 20 21 EB         [24]  730 	jb	_FLAG_21H,00112$
+                                    731 ;	assignBit
+      0000CD D2 8C            [12]  732 	setb	_TR0
+                                    733 ;	assignBit
+      0000CF D2 A9            [12]  734 	setb	_ET0
+                                    735 ;	assignBit
+      0000D1 D2 A8            [12]  736 	setb	_EX0
+                                    737 ;	p8051.c:178: }
+      0000D3 80 E3            [24]  738 	sjmp	00112$
+                                    739 	.area CSEG    (CODE)
+                                    740 	.area CONST   (CODE)
+                                    741 	.area CONST   (CODE)
+      000000                        742 _data0EAE:
+      000000 00                     743 	.db #0x00	; 0
+                                    744 	.area CSEG    (CODE)
+                                    745 	.area XINIT   (CODE)
+                                    746 	.area CABS    (ABS,CODE)
